@@ -63,6 +63,7 @@ class Comment(models.Model):
     posted_date = models.DateTimeField(auto_now_add=True)
     comment = models.TextField(max_length=500)
 
+
     def __str__(self):
         return f'{self.user.username} - {self.comment[0:8]}...'
     
