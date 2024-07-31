@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from inside_talks.models import Genre,VideoMetadata,VideoThumbnail,Comment,Participant
+from inside_talks.models import Genre,VideoData,Comment,Participant
 
 
 class GenreSerializer(serializers.ModelSerializer):
@@ -12,7 +12,7 @@ class VideoMetadataSerializer(serializers.ModelSerializer):
     genres = GenreSerializer(many=True, read_only=True)
 
     class Meta:
-        model = VideoMetadata
+        model = VideoData
         fields = ['title', 'duration', 'genres', 'posted_date', 'language', 'likes', 'description']
 
 
@@ -21,12 +21,6 @@ class ParticipantSerializer(serializers.ModelSerializer):
         model = Participant
         fields = ['video','user','role']
 
-
-
-class VideoThumbnailSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = VideoThumbnail
-        fields = ['video', 'banner_image_url', 'portrait_image_url']
 
 
 class CommentSerializer(serializers.ModelSerializer):
