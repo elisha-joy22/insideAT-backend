@@ -47,7 +47,7 @@ class VideoData(models.Model):
 
 
 class Resource(models.Model):
-    video_data = models.OneToOneField(VideoData, related_name="metadata", on_delete=models.CASCADE)
+    video_data = models.OneToOneField(VideoData, related_name="resource", on_delete=models.CASCADE)
     video_url = models.URLField()
     banner_image_url = models.URLField()
     portrait_image_url = models.URLField()
@@ -74,6 +74,6 @@ class Comment(models.Model):
     comment = models.TextField(max_length=500)
 
     def __str__(self):
-        return f'{self.user.username} - {self.comment[0:8]}...'
+        return f'{self.user.username} - {self.comment[:8]}...'
     
 
